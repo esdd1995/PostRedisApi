@@ -1,0 +1,6 @@
+@PostRedisApi_HostAddress = http://localhost:5003
+
+GET {{PostRedisApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
