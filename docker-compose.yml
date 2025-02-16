@@ -9,28 +9,34 @@ services:
     depends_on:
       - postgres  # Wait for Postgres to be ready before starting webapi
       - redis    # Wait for Redis to be ready before starting webapi
-
+    networks:
+      - my-app-net  # Connect webapi to the custom network
 
   # Postgres database
   postgres:
     image: postgres:alpine3.20  # Use the official Postgres image with Alpine 3.20 base
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: test123  # Set the Postgres password (matches your appsettings.json)
       POSTGRES_USER: postgres  # Set the Postgres username (matches your appsettings.json)
       POSTGRES_DB: pstest  # Set the Postgres database name (matches your appsettings.json)
     volumes:
       - postgres-data:/var/lib/postgresql/data  # Persist Postgres data volume
-
+    networks:
+      - my-app-net  # Connect Postgres to the custom network
 
   # Redis server
   redis:
     image: redis:latest  # Use the official latest Redis image
-    ports:
-      - "6379:6379"  # Expose Redis port 6379 to the host
+    
     volumes:
       - redis-data:/data  # Persist Redis data volume
+    networks:
+      - my-app-net  # Connect Redis to the custom network
+
+# Define a custom network for the application
+networks:
+  my-app-net:
+    external: false  # Create a new internal network
 
 volumes:
   # Define volumes for persistent data
