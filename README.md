@@ -45,6 +45,18 @@ See api [Dockerfile](app/api/Dockerfile)  for more information.
 
 To debug the .NET Core API using Visual Studio Code attach a debugger, the configuration is defined in [launch.json](.vscode/launch.json).
 
+after starting the containers:
+1. **Attach the Debugger**:
+   - In Visual Studio Code, go to the Debug view by clicking the Debug icon in the Activity Bar on the side of the window.
+   - Select the ".NET Core Docker Attach" configuration from the dropdown menu at the top.
+   - Press `F5` to start debugging.
+   - When prompted, select the process `.dll` to attach to . 
+2. **Set Breakpoints**:
+   - Open the `.cs` files where you want to set breakpoints.
+
+
+Once the debugger is attached, you can hit breakpoints, inspect variables, and step through code as you would in a local debugging session.
+
 ### Hot Reload
 The Vue.js frontend supports hot reload. Any changes made to the frontend code will be automatically reflected in the browser without needing to restart the Docker container.
 see frontend [Dockerfile](app/frontend/Dockerfile) for more information.
