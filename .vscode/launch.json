@@ -18,7 +18,7 @@
         "quoteArgs": false
       },
       "sourceFileMap": {
-        "/app": "${workspaceFolder}"
+        "/app": "${workspaceFolder}/app/api"
       },
       "targetArchitecture": "x86_64"
     }

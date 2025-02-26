@@ -3,9 +3,11 @@ version: "3.8"  # Specify Docker Compose version
 services:
   # Web API service
   webapi:
-    build: .  # Build the image from the current directory (where Dockerfile resides)
+    build:
+      context: ./app/api
+      dockerfile: Dockerfile
     ports:
-      - "8080:8080"  # Expose port 5000 of the container to port 5000 of the host
+      - "8080:8080"  # Expose port 80 of the container to port 8080 of the host
     depends_on:
       - postgres  # Wait for Postgres to be ready before starting webapi
       - redis    # Wait for Redis to be ready before starting webapi
@@ -27,11 +29,20 @@ services:
   # Redis server
   redis:
     image: redis:latest  # Use the official latest Redis image
-    
     volumes:
       - redis-data:/data  # Persist Redis data volume
     networks:
       - my-app-net  # Connect Redis to the custom network
+
+  # Frontend service
+  frontend:
+    build:
+      context: ./app/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"  # Expose port 80 of the container to port 3000 of the host
+    networks:
+      - my-app-net  # Connect frontend to the custom network
 
 # Define a custom network for the application
 networks:

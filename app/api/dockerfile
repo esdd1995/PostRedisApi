@@ -1,7 +1,7 @@
 # Stage 1: Restore dependencies (uses .NET SDK)
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS restore-stage
 WORKDIR /app
-COPY . .
+COPY . .  
 RUN dotnet restore
 RUN dotnet publish -c Debug -o out
 
@@ -14,7 +14,7 @@ RUN dotnet-ef database update --project /app
 # Stage 2: Build the image (doesn't require .NET SDK)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-COPY --from=restore-stage /app/ .
+COPY --from=restore-stage /app/out .
 
 # Install the .NET Core debugger
 RUN apt-get update \
@@ -24,6 +24,6 @@ RUN apt-get update \
     && ls -la /remote_debugger
 
 # Set the working directory for the application
-WORKDIR /app/out
+WORKDIR /app
 # Start the application
 CMD ["dotnet", "PostRedisApi.dll"]
