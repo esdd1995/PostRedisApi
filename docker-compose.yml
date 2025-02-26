@@ -40,10 +40,13 @@ services:
       context: ./app/frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:80"  # Expose port 80 of the container to port 3000 of the host
+      - "3000:8080"  # Expose port 80 of the container to port 3000 of the host
+    volumes:
+      - ./app/frontend:/app  # Mount the frontend source code directory
+      - /app/node_modules  # Ensure node_modules is not overwritten
+    command: npm run serve  # Use the serve command for hot reload
     networks:
       - my-app-net  # Connect frontend to the custom network
-
 # Define a custom network for the application
 networks:
   my-app-net:
