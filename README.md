@@ -41,7 +41,7 @@ This command will:
 ## Debugging
 ### .Net Remote Debugger
 This project utilizes `remote_debugger` for .Net. 
-See api [Dockerfile](app/api/Dockerfile)  for more information.
+See api [Dockerfile](app/api/dockerfile)  for more information.
 
 To debug the .NET Core API using Visual Studio Code attach a debugger, the configuration is defined in [launch.json](.vscode/launch.json).
 
@@ -50,7 +50,7 @@ after starting the containers:
    - In Visual Studio Code, go to the Debug view by clicking the Debug icon in the Activity Bar on the side of the window.
    - Select the ".NET Core Docker Attach" configuration from the dropdown menu at the top.
    - Press `F5` to start debugging.
-   - When prompted, select the process `.dll` to attach to . 
+   - When prompted, select the process `.dll` to attach to. 
 2. **Set Breakpoints**:
    - Open the `.cs` files where you want to set breakpoints.
 
@@ -59,7 +59,7 @@ Once the debugger is attached, you can hit breakpoints, inspect variables, and s
 
 ### Hot Reload
 The Vue.js frontend supports hot reload. Any changes made to the frontend code will be automatically reflected in the browser without needing to restart the Docker container.
-see frontend [Dockerfile](app/frontend/Dockerfile) for more information.
+see frontend [Dockerfile](app/frontend/dockerfile) for more information.
 
 
 ## Project Structure
