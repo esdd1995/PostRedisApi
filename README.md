@@ -1,24 +1,43 @@
-# PostRedisApi: A .NET Core 8 Web API with PostgreSQL and Redis Caching
+# PostRedisApi Project
 
-This project implements a .NET Core 8 web API utilizing PostgreSQL as the primary database and Redis for caching purposes.
+## Overview
+
+The PostRedisApi project is a full-stack application that includes a .NET Core Web API, a Vue.js frontend, and a PostgreSQL database. The project is containerized using Docker and supports features such as hot reload for the frontend, debugging for the .NET Core API, and persistent data storage for the PostgreSQL database.
 
 ## Features
 
-* Built with ASP.NET Core 8
-* Leverages Entity Framework Core for database access (PostgreSQL)
-* Integrates StackExchange.Redis for in-memory caching
+- **.NET Core Web API**: Provides endpoints for managing products.
+- **Vue.js Frontend**: A user interface for interacting with the API.
+- **PostgreSQL Database**: Stores product data.
+- **Redis**: Used for caching.
+- **Docker**: Containerizes the entire application for easy deployment and development.
+- **Hot Reload**: Supports hot reload for the Vue.js frontend.
+- **Debugger**: Supports debugging for the .NET Core API using Visual Studio Code.
 
-## Running the API
+## Prerequisites
 
-**Prerequisites:**
+- Docker
+- Docker Compose
+- Visual Studio Code (for debugging)
 
-* Docker installed (https://www.docker.com/)
+## Getting Started
 
-**Instructions:**
+### Docker Compose
+Use Docker Compose to build and run the application:
+```sh 
+docker-compose up --build
+```
+This command will:
 
-1. Clone this repository.
-2. Open a terminal in the project directory.
-3. Run the following command to start the API with Docker Compose:
+* Build the Docker images for the API and frontend.
+* Start the PostgreSQL and Redis containers.
+* Start the API and frontend containers.
+### Accessing the Application
+* API: http://localhost:8080
+* Frontend: http://localhost:3000
 
-   ```bash
-   docker-compose up -d
+### Hot Reload
+The Vue.js frontend supports hot reload. Any changes made to the frontend code will be automatically reflected in the browser without needing to restart the Docker container.
+
+### Debugging
+To debug the .NET Core API using Visual Studio Code attach a debuger, the cofiguration is defined in `.vscode/launch.json`.

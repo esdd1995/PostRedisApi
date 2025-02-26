@@ -33,7 +33,7 @@
     <div>
         <h3>Products</h3>
         <div class="card centeralign addmargin" style="width: 18rem;" v-for="product in productList" :key="product.id">
-            <div class="card-body">
+            <div class="card-body" v-on:click="setSelectedCustomer(product.title)">
                 <h5 class="card-title">{{product.title}}</h5>
                 <h5 class="card-title">this is emad</h5>
                 <p class="card-text">{{product.content}}</p>
